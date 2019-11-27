@@ -1,0 +1,47 @@
+[
+  {
+    "type": "image",
+    "format": "JPG",
+    "mimeType": "image/jpeg",
+    "width": 3024,
+    "height": 4032,
+    "name": "P90912-152007.jpg",
+    "path": "/static/img/life/P90912-152007.jpg"
+  },
+  {
+    "type": "image",
+    "format": "JPG",
+    "mimeType": "image/jpeg",
+    "width": 3024,
+    "height": 4032,
+    "name": "P90912-172718.jpg",
+    "path": "/static/img/life/P90912-172718.jpg"
+  },
+  {
+    "type": "image",
+    "format": "JPG",
+    "mimeType": "image/jpeg",
+    "width": 3024,
+    "height": 4032,
+    "name": "P90914-182840.jpg",
+    "path": "/static/img/life/P90914-182840.jpg"
+  },
+  {
+    "type": "image",
+    "format": "JPG",
+    "mimeType": "image/jpeg",
+    "width": 600,
+    "height": 800,
+    "name": "P90914-182901.jpg",
+    "path": "/static/img/life/P90914-182901.jpg"
+  },
+  {
+    "type": "image",
+    "format": "JPG",
+    "mimeType": "image/jpeg",
+    "width": 3024,
+    "height": 4032,
+    "name": "P91004-185857.jpg",
+    "path": "/static/img/life/P91004-185857.jpg"
+  }
+]

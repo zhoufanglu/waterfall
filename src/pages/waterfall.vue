@@ -42,8 +42,19 @@
             <!-- 第二列 -->
             <div class="column">
                 <div>第二列</div>
-                <div class="item" v-for="(i,index) in col_2" :key="i.value">
-                    <img mode='widthFix' :src="i.img" :alt="i.value">
+                <div class="item" v-for="(i,index) in col_test_2" :key="i.name">
+                    <!--<img mode='widthFix' :src="i.path" :alt="i.name">-->
+                    <van-image
+                            use-error-slot
+                            :src="i.path"
+                            width="100%"
+                            height="260px"
+                            lazy-load
+                            fit="cover"
+                            show-menu-by-longpress="true"
+                    >
+                        <text slot="error">加载失败</text>
+                    </van-image>
                 </div>
             </div>
             <!-- 第三列 -->
@@ -78,6 +89,7 @@
 </template>
 <script>
   import data from '../js/waterfallData'
+  import imgData from '../js/imgData.json'
   export default {
     name: '',
     data() {
@@ -111,16 +123,12 @@
           },
 
         ],
-        showList:['https://i.pinimg.com/236x/7f/24/8c/7f248c9e18abe79de0d6c79617e03361.jpg',
-            'https://i.pinimg.com/236x/44/d4/c3/44d4c397ff1831222a32620006d3e4ae.jpg',
-          'https://i.pinimg.com/236x/3d/90/bc/3d90bc862205b58b4cba9d8ccf2ada3d.jpg'
-        ]
+        col_test_2:[]
       }
     },
     methods: {
       initMasonryData(){
         let n = 0
-        //console.log(124, data[1])
         while (n < data.length) {
           this.col_1.push(data[n++])
           if(data[n]){
@@ -130,10 +138,9 @@
             this.col_3.push(data[n++])
           }
         }
-        //console.log(111,this.col_1)
-        /*console.log(111,this.col_1)
-        console.log(222,this.col_2)
-        console.log(333,this.col_3)*/
+        //处理node的数据
+        console.log(134,imgData)
+        this.col_test_2 = imgData
       },
       showImg(img){
         this.currentImg = img
@@ -197,3 +204,4 @@
         }
     }
 </style>
+[object Object],[object Object],[object Object],[object Object],[object Object]

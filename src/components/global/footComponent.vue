@@ -29,7 +29,7 @@
             url = "/pages/index";
             break;
           case 'pagesTest':
-            url = "/pages/test";
+            url = "/pages/life";
             break;
           case 2:
             url = "3";
