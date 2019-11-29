@@ -32,6 +32,7 @@ var getFiles = {
       let obj = ms
       obj.name = item.filename//获取文件名
       obj.path = item.path.substring(5)+item.filename
+      //obj.requirePath = `require(${item.path.substring(5)+item.filename})`
       ms.mimeType && (imageList.push(obj))
     });
     return imageList;

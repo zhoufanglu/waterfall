@@ -21,16 +21,12 @@
             <!-- 第一列 -->
             <div class="column">
                 <div>第一列</div>
-                <!--<div class="item" @click="showImg(i.img)" v-for="(i,index) in col_1" :key="i.value">
-                    <img mode='widthFix' :src="i.img" :alt="i.value">
-                </div>-->
-                <div class="item" @click="showImg(i)" v-for="(i,index) in col_test_1" :key="i">
-                    <!--<img :src="i" alt="" mode='widthFix'>-->
+                <div class="item" @click="showImg(i)" v-for="(i,index) in col_1" :key="i">
                     <van-image
                             use-error-slot
                             :src="i.path"
                             width="100%"
-                            :height="i.height"
+                            :height="i.randomHeight"
                             lazy-load
                             fit="cover"
                             show-menu-by-longpress="true"
@@ -42,13 +38,16 @@
             <!-- 第二列 -->
             <div class="column">
                 <div>第二列</div>
-                <div class="item" v-for="(i,index) in col_test_2" :key="i.name">
+                <div class="item" v-for="(i,index) in col_2"
+                     :key="i.name"
+                     @click="showImg(i)"
+                >
                     <!--<img mode='widthFix' :src="i.path" :alt="i.name">-->
                     <van-image
                             use-error-slot
                             :src="i.path"
                             width="100%"
-                            height="260px"
+                            :height="i.randomHeight"
                             lazy-load
                             fit="cover"
                             show-menu-by-longpress="true"
@@ -60,17 +59,30 @@
             <!-- 第三列 -->
             <div class="column">
                 <div>第三列</div>
-                <div class="item" v-for="(i,index) in col_3" :key="i.value">
-                    <img mode='widthFix' :src="i.img" :alt="i.value">
+                <div class="item" v-for="(i,index) in col_3"
+                     :key="i.name"
+                     @click="showImg(i)"
+                >
+                    <!--<img mode='widthFix' :src="i.path" :alt="i.name">-->
+                    <van-image
+                            use-error-slot
+                            :src="i.path"
+                            width="100%"
+                            :height="i.randomHeight"
+                            lazy-load
+                            fit="cover"
+                            show-menu-by-longpress="true"
+                    >
+                        <text slot="error">加载失败</text>
+                    </van-image>
                 </div>
             </div>
         </div>
         <!--popup-->
         <van-popup :show="isShowPop" @close="onPopClose" class="pic-popup">
-            {{currentImg.initialWidth}}-{{currentImg.initialHeight}}
             <img :src="currentImg.path"
-
-                 :style={height:currentImg.initialHeight,width:currentImg.initialWidth}
+            :style={height:currentImg.height/10,width:currentImg.width/10}
+                 mode="widthFix"
             >
                 <!--<van-image
                         use-error-slot
@@ -88,7 +100,7 @@
     </div>
 </template>
 <script>
-  import data from '../js/waterfallData'
+  //import data from '../js/waterfallData'
   import imgData from '../js/imgData.json'
   export default {
     name: '',
@@ -99,35 +111,13 @@
         col_3:[],
         currentImg:{},
         isShowPop: false,
-        col_test_1:[
-          {
-            path:'/static/img/1.png',
-            initialWidth:'236px',
-            initialHeight:'236px',
-            height: '200px'
-          },{
-            path:'/static/img/2.png',
-            initialWidth:'236px',
-            initialHeight:'258px',
-            height: '200px'
-          },{
-            path:'/static/img/3.png',
-            initialWidth:'236px',
-            initialHeight:'461px',
-            height: '200px'
-          },{
-            path:'/static/img/4.png',
-            initialWidth:'236px',
-            initialHeight:'298px',
-            height: '200px'
-          },
-
-        ],
         col_test_2:[]
       }
     },
     methods: {
       initMasonryData(){
+        //处理node的数据
+        let data = imgData
         let n = 0
         while (n < data.length) {
           this.col_1.push(data[n++])
@@ -138,9 +128,7 @@
             this.col_3.push(data[n++])
           }
         }
-        //处理node的数据
-        console.log(134,imgData)
-        this.col_test_2 = imgData
+        console.log(131,this.col_2[0])
       },
       showImg(img){
         this.currentImg = img
@@ -184,6 +172,7 @@
                     font-family: 微软雅黑;
                 }
                 .item {
+                    border: solid 1px red;
                     padding-bottom: 2px;
                     width: 100%;
                     img{
@@ -199,7 +188,9 @@
     .p-waterfall{
         .pic-popup{
             .van-popup{
-                padding: 30px;
+                padding: 30rpx;
+                max-width: 90%;
+                max-height: 90%;
             }
         }
     }
